@@ -32,7 +32,7 @@
   <input type="text" id="urlInput" placeholder="http://">
   <button onclick="loadIframe()">Load</button>
 
-  <iframe id="displayFrame"></iframe>
+  <iframe id="displayFrame" onload="checkIframeLoad()"></iframe>
 
   <script>
     function loadIframe() {
@@ -45,6 +45,24 @@
 
       document.getElementById("displayFrame").src = url;
     }
+
+    function checkIframeLoad() {
+      const iframe = document.getElementById("displayFrame");
+      try {
+        // If cross-origin, this will throw
+        const test = iframe.contentWindow.location.href;
+      } catch (e) {
+        alert("This site cannot be displayed in an iframe due to browser security policies.");
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("urlInput").addEventListener("keydown", function(e) {
+        if (e.key === "Enter") {
+          loadIframe();
+        }
+      });
+    });
   </script>
 
 </body>
