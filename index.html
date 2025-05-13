@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>URL Loader</title>
+</head>
+<body>
+
+  <h2>Enter a URL to display:</h2>
+
+  <!-- Textbox for URL input -->
+  <input type="text" id="urlInput" placeholder="https://example.com">
+
+  <!-- Button to load the URL -->
+  <button onclick="loadIframe()">Load</button>
+
+  <!-- Iframe to display the URL -->
+  <iframe id="displayFrame" width="600" height="400"></iframe>
+
+  <script>
+    function loadIframe() {
+      const url = document.getElementById("urlInput").value;
+
+      // Optional: basic validation to ensure it starts with http
+      if (!url.startsWith('http')) {
+        alert('Please enter a valid URL starting with http or https');
+        return;
+      }
+
+      document.getElementById("displayFrame").src = url;
+    }
+  </script>
+
+</body>
+</html>
