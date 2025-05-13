@@ -18,10 +18,10 @@
     }
 
     #displayFrame {
-      width: 100%;
+      width: 80%;
       height: 70%;
-      margin-top: 20px;
       border: 1px solid #ccc;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -38,17 +38,10 @@
     function loadIframe() {
       const url = document.getElementById("urlInput").value.trim();
 
-      // Better validation using regular expression
-      if (!/^https?:\/\//i.test(url)) {
-        alert('Please enter a valid URL starting with http:// or https://');
+      if (!url.startsWith('http')) {
+        alert('Please enter a valid URL starting with http or https');
         return;
       }
-      document.getElementById("urlInput").addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    loadIframe();
-  }
-});
-
 
       document.getElementById("displayFrame").src = url;
     }
